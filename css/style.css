@@ -1,0 +1,18 @@
+main{
+	width: 1200px;
+	max-width: 100%;
+	margin: 10px auto;
+}
+
+a.navbar-btn {
+	float: right;
+	margin-right: 10px;
+}
+
+a.pull-right {
+	margin-right: 10px;
+}
+
+.news-image {
+	max-width: 150px;
+}
