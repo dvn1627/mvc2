@@ -23,7 +23,7 @@ class NewsController extends test1\Controller
         if (!isset($_POST['title']) || strlen($_POST['title']) > 127 || strlen($_POST['title']) < 2) {
             header('Location: /');
         }
-        $news = $this->getModel('NewsModel');
+        $news = new NewsModel();
         $news->set('title', $_POST['title']);
         if (isset($_POST['message']) && strlen($_POST['message']) > 2 && strlen($_POST['message']) < 1023) {
             $news->set('message', $_POST['message']);

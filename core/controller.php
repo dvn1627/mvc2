@@ -16,7 +16,7 @@ class Controller {
 			return false;
 		}
 		include_once $modelPath;
-		return new $modelName;
+		return true;
 	}
 
 }
