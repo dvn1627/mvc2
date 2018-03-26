@@ -2,16 +2,21 @@
 namespace test1;
 class Controller {
 	
-	public $model;
 	public $view;
 	
-	function __construct()
+	public function __construct()
 	{
 		$this->view = new View();
 	}
 	
-	function index()
+	public function getModel($modelName)
 	{
-		// todo	
+		$modelPath = "../model/" . $modelName . '.php';
+		if (!file_exists($modelPath)) {
+			return false;
+		}
+		include_once $modelPath;
+		return new $modelName;
 	}
+
 }

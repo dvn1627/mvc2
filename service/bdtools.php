@@ -11,7 +11,7 @@ class bdtools
 
 	static public function connect() {
 		if (is_null(self::$_instance)) {
-			$file = file_get_contents('config_db.json');
+			$file = file_get_contents('../config_db.json');
 			$config = json_decode($file);
 			$dsn = 'mysql:host='.$config->host . ';dbname=' . $config->database . ';charset=utf8;';
 			$options = array(

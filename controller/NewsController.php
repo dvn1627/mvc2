@@ -7,7 +7,12 @@ class NewsController extends test1\Controller
         if (!isset($_SESSION['id'])) {
             header('Location: /');
         }
-        $this->view->generate('news/create.php', 'main.php', 'create news');
+        $this->view->generate('news/create', 'main', 'create news');
+    }
+
+    public function __construct() {
+        parent::__construct();
+        $this->getModel('NewsModel');
     }
     
     public function store()
@@ -18,7 +23,7 @@ class NewsController extends test1\Controller
         if (!isset($_POST['title']) || strlen($_POST['title']) > 127 || strlen($_POST['title']) < 2) {
             header('Location: /');
         }
-        $news = new NewsModel();
+        $news = $this->getModel('NewsModel');
         $news->set('title', $_POST['title']);
         if (isset($_POST['message']) && strlen($_POST['message']) > 2 && strlen($_POST['message']) < 1023) {
             $news->set('message', $_POST['message']);
@@ -45,12 +50,12 @@ class NewsController extends test1\Controller
         header('Location: /');
     }
 
-    public function delete()
+    public function delete($id)
     {
-        if (!isset($_SESSION['id']) || !isset($_GET['id'])) {
+        if (!isset($_SESSION['id']) || is_null($id)) {
             header('Location: /');
         }
-        $news = NewsModel::find('NewsModel', $_GET['id']);
+        $news = NewsModel::find('NewsModel', $id);
         if ($news->get('user_id') != $_SESSION['id']) {
             header('Location: /');
         }
@@ -61,16 +66,16 @@ class NewsController extends test1\Controller
         header('Location: /');
     }
 
-    public function edit()
+    public function edit($id)
     {
-        if (!isset($_SESSION['id']) || !isset($_GET['id'])) {
+        if (!isset($_SESSION['id']) || is_null($id)) {
             header('Location: /');
         }
-        $news = NewsModel::find('NewsModel', $_GET['id']);
+        $news = NewsModel::find('NewsModel', $id);
         if ($news->get('user_id') != $_SESSION['id']) {
             header('Location: /');
         }
-        $this->view->generate('news/create.php', 'main.php', 'create news', $news);
+        $this->view->generate('news/create', 'main', 'create news', $news);
     }
 
     public function update()

@@ -8,8 +8,8 @@
             <div class="panel-heading">
                 <?php echo $news['title'] ?>
                 <?php if (isset($_SESSION['id']) && $_SESSION['id'] == $news['user_id']): ?>
-                    <a href="http://<?php echo ENV_URL . '/news/edit/?id=' . $news['id']; ?>" class="btn btn-xs btn-warning pull-right">EDIT</a>
-                    <a href="http://<?php echo ENV_URL . '/news/delete/?id=' . $news['id']; ?>" class="btn btn-xs btn-danger pull-right">DELETE</a>
+                    <a href="http://<?php echo ENV_URL . '/news/edit/' . $news['id']; ?>" class="btn btn-xs btn-warning pull-right">EDIT</a>
+                    <a href="http://<?php echo ENV_URL . '/news/delete/' . $news['id']; ?>" class="btn btn-xs btn-danger pull-right">DELETE</a>
                 <?php endif; ?>
             </div>
                 <div class="panel-body">

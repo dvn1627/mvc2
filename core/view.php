@@ -5,6 +5,7 @@ class View
 	
 	function generate($contentView, $stampView, $title, $data = null)
 	{
-		include 'view/'.$stampView;
+		$contentView = $contentView . '.php';
+		include '../view/' . $stampView . '.php';
 	}
 }

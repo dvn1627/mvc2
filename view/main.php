@@ -18,10 +18,10 @@
       <li class="active"><a href="http://<?php echo $_SERVER['HTTP_HOST'];?>">Home</a></li>
     </ul>
 <?php if (isset($_SESSION['id'])): ?>
-  <a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/auth/logout" class="btn btn-default  navbar-btn">Logout</a>
+  <a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/logout" class="btn btn-default  navbar-btn">Logout</a>
 	<a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/news/create" class="btn btn-success navbar-btn">Add news</a>
 <?php else: ?>
-    <form class="navbar-form navbar-right" action="http://<?php echo $_SERVER['HTTP_HOST'];?>/auth/login" method="post">
+    <form class="navbar-form navbar-right" action="http://<?php echo $_SERVER['HTTP_HOST'];?>/login" method="post">
       <div class="form-group">
         <input type="email" class="form-control" placeholder="email..." name ="email" required>
 		<input type="password" class="form-control" placeholder="password..." name="password" required>
@@ -33,7 +33,7 @@
 </nav>
 
 <main>
-	<?php include 'view/'.$contentView; ?>
+	<?php include $contentView; ?>
 </main>
 
 <script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/js/jquery-2.0.0.min.js"></script>

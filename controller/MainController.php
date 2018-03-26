@@ -4,8 +4,15 @@ class MainController extends test1\Controller
 	
 	public function index()
 	{
-		$model = new MainModel();
+		$model = $this->getModel('MainModel');
 		$data = $model->getArray(['table'	=> 'news']);
-		$this->view->generate('news.php', 'main.php', 'news page', ['news' => $data]);
+		$this->view->generate('news', 'main', 'news page', ['news' => $data]);
 	}
+
+	public function test($id)
+	{
+		echo "<h1>TEST PAGE</h1>";
+		var_dump($id);
+	}
+
 }

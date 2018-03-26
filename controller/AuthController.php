@@ -4,7 +4,8 @@ class AuthController extends test1\Controller
     
     public function __construct()
     {
-        $this->model = new AuthModel();
+        parent::__construct();
+        $this->getModel('AuthModel');
     }
     
 	public function login()
@@ -12,7 +13,8 @@ class AuthController extends test1\Controller
         if (!isset($_POST['password']) || !isset($_POST['email'])) {
             header('Location: /');
         }
-        $adminId = $this->model->login(['password' => $_POST['password'], 'email' => $_POST['email']]);
+        $AuthModel = new AuthModel();
+        $adminId = $AuthModel->login(['password' => $_POST['password'], 'email' => $_POST['email']]);
         if ($adminId) {
             $_SESSION['id'] = $adminId;
             header('Location: /');
